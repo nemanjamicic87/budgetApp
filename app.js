@@ -1,15 +1,18 @@
-//////////////////////////////////////////////////////Budget controller
+///////////////////Budget controller//////////////////////
+//////////////////////////////////////////////////////////
 var budgetController = (function() {
     
+    //this is function constructor for creating new objects
     var Expense = function(id, description, value) {
         this.id = id;
         this.description = description;
         this.value = value;
     }
     
+    //this is function constructor for creating new objects
     var Income = function(id, description, value) {
         this.id = id;
-        this.description = description;
+        this.description = description; 
         this.value = value;
     }
 
@@ -52,6 +55,7 @@ var budgetController = (function() {
             //Return the new element
             return newItem;
         },
+        //just to test our data structure
         testing: function() {console.log(data);}
     };
     
@@ -59,7 +63,8 @@ var budgetController = (function() {
 
 
 
-///////////////////////////////////////////////////UI controller
+/////////////////////////UI controller////////////////
+/////////////////////////////////////////////////////
 var UIController = (function(){
     
     var DOMstrings = {
@@ -106,9 +111,11 @@ var UIController = (function(){
 
 
 
-////////////////////////////////////////////////Global app controller
+//////////////////////////Global app controller///////////////////////
+//////////////////////////////////////////////////////////////////////
 var controller = (function(budgetCtrl, UICtrl) {
     
+    //function which will have all event listeners
     var setupEventListeners = function() {
         
             var DOM = UICtrl.getDOMstrings();
@@ -140,11 +147,11 @@ var controller = (function(budgetCtrl, UICtrl) {
                    
     return {
         init: function() {
-            console.log("App has started");
-            setupEventListeners();
+            setupEventListeners(); //We setup event listeners with this call
         }
     }
     
 })(budgetController, UIController);
 
-controller.init();
+controller.init(); //this is only line of code we will put outside the module functions, we need
+// this call because of the event listeners, without this call, event listeners would not work
